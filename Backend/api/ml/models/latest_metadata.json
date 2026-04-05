@@ -1,0 +1,56 @@
+{
+  "trained_at": "2026-03-01T15:04:16.643083",
+  "n_samples": 516,
+  "n_features": 17,
+  "model_type": "RandomForestRegressor",
+  "performance_metrics": {
+    "train_mae": 2.778996047792207,
+    "test_mae": 3.225080287441205,
+    "train_rmse": 3.438506078553957,
+    "test_rmse": 4.032545140724191,
+    "train_r2": 0.47688410452277175,
+    "test_r2": 0.22298860617710303
+  },
+  "feature_importance": [
+    {
+      "feature": "payment_hour_mean",
+      "importance": 0.46196476226553046
+    },
+    {
+      "feature": "month_of_year",
+      "importance": 0.1090752819768353
+    },
+    {
+      "feature": "property_id",
+      "importance": 0.06959133412658604
+    },
+    {
+      "feature": "payment_hour_std",
+      "importance": 0.05624794682270799
+    },
+    {
+      "feature": "days_from_due_date_std",
+      "importance": 0.05374430544530473
+    },
+    {
+      "feature": "days_before_due",
+      "importance": 0.05237505538041556
+    },
+    {
+      "feature": "monthly_rent",
+      "importance": 0.03138134450408974
+    },
+    {
+      "feature": "payment_day_of_week_mean",
+      "importance": 0.0291599091479685
+    },
+    {
+      "feature": "is_early_mean",
+      "importance": 0.025347120109146307
+    },
+    {
+      "feature": "hours_notification_to_payment_mean",
+      "importance": 0.024332223752100986
+    }
+  ]
+}

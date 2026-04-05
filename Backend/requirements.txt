@@ -1,0 +1,33 @@
+# Backend Python dependencies (pinned for reproducibility)
+Django==6.0.1
+djangorestframework==3.16.1
+djangorestframework-simplejwt==5.5.1
+django-cors-headers==4.9.0
+asgiref==3.11.0
+PyJWT==2.10.1
+pytz==2025.2
+sqlparse==0.5.5
+psycopg2-binary==2.9.11
+python-dotenv==1.2.1
+requests==2.32.3
+channels==4.1.0
+daphne==4.0.0
+pywebpush==2.0.0
+
+# ML / data science dependencies (used by api/ml/ and update_ml_schedules command)
+numpy==2.2.3
+pandas==2.2.3
+scikit-learn==1.8.0
+joblib==1.4.2
+matplotlib==3.10.8
+
+# Dev / testing / formatting tools
+pytest==7.4.2
+pytest-django==4.5.2
+black==24.1.0
+isort==5.12.0
+pre-commit==3.4.0
+flake8==6.1.0
+
+# NOTE: keep this file in sync with your virtual environment
+# To install: python -m pip install -r requirements.txt

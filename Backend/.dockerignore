@@ -1,0 +1,34 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+.vscode
+.idea
+
+__pycache__
+*.pyc
+*.pyo
+
+# Uploaded files — mount as a volume instead
+media/
+
+# Collected static — rebuilt in Dockerfile
+staticfiles/
+
+# Dev / test tooling
+.pytest_cache
+.coverage
+htmlcov
+.venv
+venv
+
+# Docker files (not needed inside the image)
+Dockerfile
+docker-compose*
+.dockerignore
+
+# Docs
+README.md
+LICENSE
+*.md

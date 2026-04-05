@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="description" content="MP-SAN Tenant Management System" />
+    
+    <!-- PWA Support -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MP-SAN TMS" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    
+    <title>MP-SAN Tenant Management</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Register Service Worker for PWA and Push Notifications
+      (async function() {
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+          window.navigator.standalone === true;
+        
+        console.log('[SW Init] Environment:', {
+          hasServiceWorker: 'serviceWorker' in navigator,
+          hasPushManager: 'PushManager' in window,
+          hasNotification: 'Notification' in window,
+          isStandalone: isStandalone,
+          userAgent: navigator.userAgent.substring(0, 100)
+        });
+
+        if ('serviceWorker' in navigator) {
+          // Wait for page to load
+          if (document.readyState !== 'complete') {
+            await new Promise(resolve => window.addEventListener('load', resolve));
+          }
+          
+          try {
+            // Check if already registered
+            const existingReg = await navigator.serviceWorker.getRegistration('/');
+            if (existingReg) {
+              console.log('[SW Init] Already registered:', existingReg.scope);
+              // Update it
+              await existingReg.update();
+            } else {
+              const registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+              console.log('[SW Init] Newly registered:', registration.scope);
+            }
+            
+            // Wait for service worker to be ready
+            const ready = await navigator.serviceWorker.ready;
+            console.log('[SW Init] Service Worker ready, pushManager:', !!ready.pushManager);
+            
+          } catch (error) {
+            console.error('[SW Init] Registration failed:', error);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
